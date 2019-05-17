@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   cli: circleci/circleci-cli@0.1.4
+  detect: circleci/os-detect@dev:test
 
 executors:
   cibuilds:
@@ -34,6 +35,10 @@ jobs:
       - run:
           name: "Validate Orb config"
           command: circleci orb validate orb.yml
+      - detect/init
+      - run: echo "The OS family is: ${OSD_FAMILY}."
+      - run: echo "The OS name is: ${OSD_ID}."
+      - run: echo "The OS version is: ${OSD_VERSION}."
   publish:
     executor: cli/default
     steps:

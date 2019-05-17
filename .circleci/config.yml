@@ -24,7 +24,6 @@ workflows:
             tags:
               # Simplified SemVer regex
               only: /^\d+\.\d+\.\d+$/
-          context: orb-publishing
 
 jobs:
   test:
@@ -36,9 +35,10 @@ jobs:
           name: "Validate Orb config"
           command: circleci orb validate orb.yml
       - detect/init
-      - run: echo "The OS family is ${OSD_FAMILY}"
+      - run: echo "The OS family is ${OSD_FAMILY}."
       - run: echo "The OS name is ${OSD_ID}."
       - run: echo "The OS version is ${OSD_VERSION}."
+      - run: echo $BASH_ENV
   publish:
     executor: cli/default
     steps:

@@ -38,6 +38,7 @@ jobs:
       - run: echo "The OS family is ${OSD_FAMILY}."
       - run: echo "The OS name is ${OSD_ID}."
       - run: echo "The OS version is ${OSD_VERSION}."
+      - run: echo "The SUDO variable is ${SUDO}."
       - run: cat $BASH_ENV
   publish:
     executor: cli/default
